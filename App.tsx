@@ -1,20 +1,23 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useFonts } from "expo-font";
+import { LogBox } from "react-native";
+import { StatusBar } from "expo-status-bar";
+import { Main } from "./src/screens/main";
 
 export default function App() {
+  LogBox.ignoreAllLogs();
+
+  const [fontsLoaded] = useFonts({
+    "DMMono-Light": require("./assets/fonts/DM_Mono/DMMono-Light.ttf"),
+    "DMMono-Medium": require("./assets/fonts/DM_Mono/DMMono-Medium.ttf"),
+    "DMMono-Regular": require("./assets/fonts/DM_Mono/DMMono-Regular.ttf"),
+  });
+
+  if (!fontsLoaded) return null;
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
+    <>
       <StatusBar style="auto" />
-    </View>
+      <Main />
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
