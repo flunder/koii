@@ -7,6 +7,7 @@ import { ElementProps } from "@koii/data";
 interface Props extends ElementProps {
   footer?: boolean;
   variant: "numPad" | "transport";
+  size?: "small" | "large";
 }
 
 const ButtonWithState = ({
@@ -16,29 +17,34 @@ const ButtonWithState = ({
   defaultState,
   shortName,
   icon,
-  variant = "numPad",
   hasIndicator,
+  variant = "numPad",
+  size = "large",
 }: Props) => {
   const onPress = () => {};
 
   const fontSize = {
-    numPad: 16,
-    transport: 10.5,
-  }[variant];
+    small: 10.5,
+    large: variant === "numPad" ? 16 : 10.5,
+  }[size];
 
-  const textAlign: FlexAlignType = {
-    numPad: "flex-start" as "flex-start", // as? https://stackoverflow.com/a/43124412/249894
-    transport: "center" as "center",
-  }[variant];
+  const textAlign = {
+    small: "center" as "center",
+    large:
+      variant === "numPad"
+        ? ("flex-start" as "flex-start")
+        : ("center" as "center"),
+  }[size];
 
   return (
     <Box flexDirection="column" flex={flex}>
-      <Button color={color} onPress={onPress} variant={variant}>
+      <Button color={color} onPress={onPress} variant={variant} size={size}>
         <Text
           color={Colors.white}
           fontSize={fontSize}
           marginBottom={3}
           alignSelf={textAlign}
+          opacity={0.7}
         >
           {text}
         </Text>

@@ -11,7 +11,8 @@ interface Props extends ViewStyle {
   onPress: () => void;
   color?: color;
   children?: React.ReactNode;
-  variant: "numPad" | "transport";
+  variant?: "numPad" | "transport";
+  size?: "small" | "large";
 }
 
 const Button = ({
@@ -19,6 +20,7 @@ const Button = ({
   children,
   color = "primary",
   variant = "numPad",
+  size = "large",
   ...props
 }: Props): JSX.Element => {
   const style = pickViewStyleProps(props);
@@ -30,14 +32,21 @@ const Button = ({
     black: [Colors.gray500, "#0a0a0a"],
   }[color];
 
+  const height = size === "large" ? 56 : 28;
+
   const paddingHorizontal = {
     numPad: Sizes[2],
     transport: 0,
   }[variant];
 
+  const overlayImage = {
+    small: require("@assets/images/button_small_overlay.png"),
+    large: require("@assets/images/button_large_overlay.png"),
+  }[size];
+
   const Socket = ({ children }: { children: React.ReactNode }) => (
     <Box
-      height={56}
+      height={height}
       width={56}
       backgroundColor={Colors.black}
       shadowColor="black"
@@ -45,6 +54,7 @@ const Button = ({
       shadowOpacity={0.7}
       shadowRadius={6}
       elevation={5}
+      borderRadius={3}
       {...style}
     >
       <LinearGradient
@@ -60,21 +70,21 @@ const Button = ({
   );
 
   const Base = ({ children }: { children: React.ReactNode }) => (
-    <Touchable flex={1} margin={2} borderRadius={2.5} onPress={onPress}>
+    <Touchable flex={1} margin={1.5} borderRadius={2.5} onPress={onPress}>
       <LinearGradient
         colors={colorProps}
         style={{ flex: 1 }}
         locations={[0, 1]}
-        start={{ x: 0.3, y: 0.3 }}
-        end={{ x: 1.2, y: 1.2 }}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
       >
         <Image
           style={{ width: "100%", height: "100%" }}
-          source={require("@assets/images/button_large_overlay.png")}
+          source={overlayImage}
         />
         <Box
           position="absolute"
-          paddingVertical={4}
+          paddingTop={Sizes[1] + 1}
           paddingHorizontal={paddingHorizontal}
           width="100%"
           height="100%"

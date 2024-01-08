@@ -1,7 +1,6 @@
 import React from "react";
-import { Image } from "react-native";
-import { Box, Button, ButtonWithState, Diode, Text } from "@koii/components";
-import { Colors, Grid, Sizes } from "@koii/theme";
+import { Grid } from "@koii/theme";
+import { Box, ButtonWithState } from "@koii/components";
 import { LAYOUT, ELEMENTS, ELEMENT_TYPES, ElementProps } from "@koii/data";
 
 const Component = ({ type, style }: ElementProps) => {
@@ -11,9 +10,9 @@ const Component = ({ type, style }: ElementProps) => {
     case ELEMENT_TYPES.FADER:
       return <Box borderWidth={0.2} flex={style.flex}></Box>;
     case ELEMENT_TYPES.BUTTON_SMALL:
-      return <Box borderWidth={0.2} flex={style.flex}></Box>;
+      return <ButtonWithState size="small" {...style} />;
     case ELEMENT_TYPES.BUTTON_LARGE:
-      return <ButtonWithState {...style} />;
+      return <ButtonWithState size="large" {...style} />;
     default:
       break;
   }

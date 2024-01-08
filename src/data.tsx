@@ -1,6 +1,7 @@
+import { FlexStyle } from "react-native";
 import { color } from "@koii/components/Button";
-import { ArrowBack } from "@koii/components";
 import { Values } from "@koii/utils/ts/values";
+import { ArrowBack } from "@koii/components";
 import { color as buttonColors } from "@koii/components/Button";
 
 export interface Button {
@@ -32,7 +33,7 @@ const ELEMENT_NAMES: { [key: string]: string } = {
   SAMPLE: "SAMPLE",
   PLAY: "PLAY",
   RECORD: "RECORD",
-};
+} as const;
 
 export type ElementNames = Values<typeof ELEMENT_NAMES>;
 
@@ -41,7 +42,7 @@ export const ELEMENT_TYPES = {
   FADER: "FADER",
   BUTTON_SMALL: "BUTTON_SMALL",
   BUTTON_LARGE: "BUTTON_LARGE",
-};
+} as const;
 
 export type ElementTypes = Values<typeof ELEMENT_TYPES>;
 
@@ -66,11 +67,22 @@ export interface ElementProps {
   variant?: any;
 }
 
-export const ELEMENTS: {
-  [key: string]: {
-    type: ElementTypes;
-    style: ElementProps;
+type BUTTON_LARGE_TYPE = {
+  type: ElementTypes[keyof "BUTTON_LARGE"];
+  style: {
+    flex?: FlexStyle["flex"];
+    color?: buttonColors;
+    text?: string;
+    shortName?: string;
+    defaultState?: boolean;
+    hasIndicator?: boolean;
+    icon?: React.ReactNode;
+    variant?: "numPad" | "transport";
   };
+};
+
+export const ELEMENTS: {
+  [key: string]: BUTTON_LARGE_TYPE;
 } = {
   VOLUME_KNOB: {
     style: {
@@ -81,12 +93,16 @@ export const ELEMENTS: {
   KEYS_BUTTON: {
     style: {
       flex: 0.5,
+      color: "black",
+      text: "KEYS",
     },
     type: ELEMENT_TYPES.BUTTON_SMALL,
   },
   FADER_BUTTON: {
     style: {
       flex: 0.5,
+      color: "black",
+      text: "FADER",
     },
     type: ELEMENT_TYPES.BUTTON_SMALL,
   },
@@ -229,6 +245,8 @@ export const ELEMENTS: {
   SAMPLE: {
     style: {
       flex: 1,
+      color: "primary",
+      text: "SAMPLE",
     },
     type: ELEMENT_TYPES.BUTTON_SMALL,
   },

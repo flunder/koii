@@ -16,7 +16,7 @@ export const Text = ({ children, style, ...props }: Props): JSX.Element => {
     <TextBase
       style={[
         {
-          fontFamily: Fonts.Light,
+          fontFamily: Fonts.Medium,
         },
         styleProps,
         style,
