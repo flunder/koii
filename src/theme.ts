@@ -28,7 +28,7 @@ export const Sizes = {
 };
 
 export const Grid = {
-  gutter_width: Sizes[5],
+  gutter_width: Sizes[3],
 };
 
 export const Corners = {

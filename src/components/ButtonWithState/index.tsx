@@ -1,7 +1,6 @@
 import React from "react";
-import { FlexAlignType } from "react-native";
 import { Box, Button, Diode, Text } from "@koii/components";
-import { Colors, Sizes } from "@koii/theme";
+import { Colors, Fonts, Sizes } from "@koii/theme";
 import { ElementProps } from "@koii/data";
 
 interface Props extends ElementProps {
@@ -54,7 +53,12 @@ const ButtonWithState = ({
         {hasIndicator && (
           <Diode marginLeft={Sizes[2]} state={defaultState ? "on" : "off"} />
         )}
-        <Text fontSize={10} marginLeft={Sizes[2]}>
+        <Text
+          fontSize={9}
+          marginLeft={Sizes[2]}
+          fontFamily={Fonts.Regular}
+          opacity={0.8}
+        >
           {shortName}
         </Text>
       </Box>

@@ -22,13 +22,13 @@ const InputElements = () => {
   return (
     <Box
       width="100%"
-      height={320}
+      height={335}
       flexDirection="row"
       paddingHorizontal={Grid.gutter_width}
     >
       {LAYOUT.map((col) => {
         return (
-          <Box flex={1}>
+          <Box flex={1} alignItems="center">
             {col.map((row) => {
               return <Component key={row} {...ELEMENTS?.[row]} />;
             })}

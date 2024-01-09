@@ -7,6 +7,9 @@ import { pickViewStyleProps } from "@koii/utils";
 
 export type color = "primary" | "gray300" | "gray400" | "black";
 
+const overlayImgSmall = require("@assets/images/button_small_overlay.png");
+const overlayImgLarge = require("@assets/images/button_large_overlay.png");
+
 interface Props extends ViewStyle {
   onPress: () => void;
   color?: color;
@@ -40,8 +43,13 @@ const Button = ({
   }[variant];
 
   const overlayImage = {
-    small: require("@assets/images/button_small_overlay.png"),
-    large: require("@assets/images/button_large_overlay.png"),
+    small: overlayImgSmall,
+    large: overlayImgLarge,
+  }[size];
+
+  const gradientLocations = {
+    small: [0, 0.2],
+    large: [0, 0.075],
   }[size];
 
   const Socket = ({ children }: { children: React.ReactNode }) => (
@@ -49,18 +57,18 @@ const Button = ({
       height={height}
       width={56}
       backgroundColor={Colors.black}
+      borderRadius={3}
       shadowColor="black"
       shadowOffset={{ width: 5, height: 5 }}
       shadowOpacity={0.7}
       shadowRadius={6}
       elevation={5}
-      borderRadius={3}
       {...style}
     >
       <LinearGradient
-        colors={[`${Colors.white}BB`, `${Colors.black}15`]}
+        colors={[`${Colors.white}FF`, `${Colors.black}15`]}
         style={{ flex: 1, padding: 1, borderRadius: 1 }}
-        locations={[0, 0.15]}
+        locations={gradientLocations}
       >
         <Box backgroundColor={Colors.black} width="100%" height="100%">
           {children}
@@ -70,10 +78,10 @@ const Button = ({
   );
 
   const Base = ({ children }: { children: React.ReactNode }) => (
-    <Touchable flex={1} margin={1.5} borderRadius={2.5} onPress={onPress}>
+    <Touchable flex={1} margin={1} borderRadius={2.5} onPress={onPress}>
       <LinearGradient
         colors={colorProps}
-        style={{ flex: 1 }}
+        style={{ flex: 1, borderRadius: 3 }}
         locations={[0, 1]}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
