@@ -1,7 +1,8 @@
 import React from "react";
 import { Image, ViewStyle } from "react-native";
-import { Box } from "@koii/components";
+
 import { Colors } from "@koii/theme";
+import { Box } from "@koii/components";
 import { pickViewStyleProps } from "@koii/utils";
 
 interface Props extends ViewStyle {

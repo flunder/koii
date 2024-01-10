@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
-import { Fonts } from "@koii/theme";
 import { TextStyle, Text as TextBase, TextProps } from "react-native";
+
+import { Fonts } from "@koii/theme";
 import { pickTextStyleProps } from "@koii/utils";
 
 interface Props extends TextStyle, TextProps {

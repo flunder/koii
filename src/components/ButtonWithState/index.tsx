@@ -1,7 +1,8 @@
 import React from "react";
-import { Box, Button, Diode, Text } from "@koii/components";
-import { Colors, Fonts, Sizes } from "@koii/theme";
+
 import { ElementProps } from "@koii/data";
+import { Colors, Fonts, Sizes } from "@koii/theme";
+import { Box, Button, Diode, Text } from "@koii/components";
 
 interface Props extends ElementProps {
   footer?: boolean;

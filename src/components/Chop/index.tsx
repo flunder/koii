@@ -1,7 +1,8 @@
-import React, { useRef, useState, useEffect } from "react";
+import React from "react";
 import { ViewStyle } from "react-native";
+
+import { Colors, Fonts } from "@koii/theme";
 import { Box, Text } from "@koii/components";
-import { Colors, Fonts, Grid, Sizes } from "@koii/theme";
 import { pickViewStyleProps } from "@koii/utils";
 
 interface Props extends ViewStyle {}

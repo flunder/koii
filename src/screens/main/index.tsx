@@ -2,8 +2,8 @@ import React from "react";
 import { Image, StyleSheet } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
-import { Box, Label, Logo } from "@koii/components";
 import { Colors, Sizes } from "@koii/theme";
+import { Box, Label } from "@koii/components";
 import { InputElements } from "./InputElements";
 
 const Frame = ({ children }: { children: React.ReactNode }) => {

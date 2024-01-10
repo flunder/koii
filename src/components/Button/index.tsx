@@ -1,9 +1,10 @@
 import React from "react";
 import { Image, ViewStyle } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { Colors, Sizes, Shadow } from "@koii/theme";
+
 import { Box, Touchable } from "@koii/components";
 import { pickViewStyleProps } from "@koii/utils";
+import { Colors, Sizes, Shadow } from "@koii/theme";
 
 export type color = "primary" | "gray300" | "gray400" | "black";
 

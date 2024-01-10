@@ -1,5 +1,3 @@
-import { Platform } from "react-native";
-
 export const Colors = {
   // Base
   primary: "#F34C27",

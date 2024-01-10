@@ -1,11 +1,11 @@
 import React from "react";
 import { Image, ViewStyle } from "react-native";
-
-import { FADER_TYPE } from "@koii/data";
-import { Box, Text } from "@koii/components";
-import { Colors, Grid, Shadow, Sizes } from "@koii/theme";
-import { pickViewStyleProps } from "@koii/utils";
 import { LinearGradient } from "expo-linear-gradient";
+
+import { Box } from "@koii/components";
+import { FADER_TYPE } from "@koii/data";
+import { pickViewStyleProps } from "@koii/utils";
+import { Colors, Shadow, Sizes } from "@koii/theme";
 
 type MergedProps = FADER_TYPE["style"] & ViewStyle;
 interface Props extends MergedProps {}

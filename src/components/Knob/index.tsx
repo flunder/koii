@@ -3,7 +3,7 @@ import { Image, ViewStyle } from "react-native";
 
 import { Box } from "@koii/components";
 import { KNOB_TYPE } from "@koii/data";
-import { Colors, Shadow, Sizes } from "@koii/theme";
+import { Colors, Shadow } from "@koii/theme";
 import { pickViewStyleProps } from "@koii/utils";
 
 export type color = "primary" | "gray100";
