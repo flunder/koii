@@ -1,7 +1,7 @@
 import { FlexStyle } from "react-native";
 import { color } from "@koii/components/Button";
 import { Values } from "@koii/utils/ts/values";
-import { ArrowBack, Chop } from "@koii/components";
+import { ArrowBack, Chop, Label } from "@koii/components";
 import { color as buttonColors } from "@koii/components/Button";
 import { color as knobColors } from "@koii/components/Knob";
 
@@ -88,6 +88,7 @@ export type KNOB_TYPE = {
   style: {
     flex?: FlexStyle["flex"];
     color?: knobColors;
+    additional?: React.ReactNode;
   };
 };
 
@@ -258,6 +259,7 @@ export const ELEMENTS: {
     style: {
       flex: 1,
       color: "primary",
+      additional: <Label name="gain" />,
     },
     type: ELEMENT_TYPES.KNOB,
   },

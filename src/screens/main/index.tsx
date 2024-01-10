@@ -25,7 +25,27 @@ const Main = (): JSX.Element => {
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
       />
-      <InputElements />
+      <Image
+        style={{
+          width: "100%",
+          height: 242,
+          position: "absolute",
+          top: 0,
+        }}
+        source={require("@assets/images/header.png")}
+      />
+      <Box top={90}>
+        <InputElements />
+      </Box>
+      <Image
+        style={{
+          width: "100%",
+          height: 152.5,
+          position: "absolute",
+          bottom: 0,
+        }}
+        source={require("@assets/images/speaker.png")}
+      />
     </Box>
   );
 };

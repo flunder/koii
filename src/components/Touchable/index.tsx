@@ -8,7 +8,7 @@ import {
 import { pickViewStyleProps } from "@koii/utils";
 
 export const defaultProps = {
-  activeOpacity: 0.9,
+  activeOpacity: 0.85,
   hitSlop: { top: 10, bottom: 10, left: 10, right: 10 },
 };
 

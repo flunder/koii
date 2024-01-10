@@ -6,5 +6,6 @@ export * from "./Diode";
 export * from "./Fader";
 export * from "./Icons";
 export * from "./Knob";
+export * from "./Label";
 export * from "./Text";
 export * from "./Touchable";

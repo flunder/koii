@@ -17,6 +17,7 @@ const Chop = ({ ...props }: Props): JSX.Element => {
         borderRadius={2}
         alignItems="center"
         justifyContent="center"
+        opacity={0.9}
       >
         <Text
           color={Colors.gray500}
