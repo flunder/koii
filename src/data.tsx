@@ -1,8 +1,9 @@
 import { FlexStyle } from "react-native";
 import { color } from "@koii/components/Button";
 import { Values } from "@koii/utils/ts/values";
-import { ArrowBack } from "@koii/components";
+import { ArrowBack, Chop } from "@koii/components";
 import { color as buttonColors } from "@koii/components/Button";
+import { color as knobColors } from "@koii/components/Knob";
 
 export interface Button {
   color: color;
@@ -67,7 +68,7 @@ export interface ElementProps {
   variant?: any;
 }
 
-type BUTTON_LARGE_TYPE = {
+export type BUTTON_LARGE_TYPE = {
   type: ElementTypes[keyof "BUTTON_LARGE"];
   style: {
     flex?: FlexStyle["flex"];
@@ -78,15 +79,32 @@ type BUTTON_LARGE_TYPE = {
     hasIndicator?: boolean;
     icon?: React.ReactNode;
     variant?: "numPad" | "transport";
+    additional?: React.ReactNode;
+  };
+};
+
+export type KNOB_TYPE = {
+  type: ElementTypes[keyof "KNOB"];
+  style: {
+    flex?: FlexStyle["flex"];
+    color?: knobColors;
+  };
+};
+
+export type FADER_TYPE = {
+  type: ElementTypes[keyof "FADER"];
+  style: {
+    flex?: FlexStyle["flex"];
   };
 };
 
 export const ELEMENTS: {
-  [key: string]: BUTTON_LARGE_TYPE;
+  [key: string]: BUTTON_LARGE_TYPE | KNOB_TYPE;
 } = {
   VOLUME_KNOB: {
     style: {
       flex: 0.85,
+      color: "gray100",
     },
     type: ELEMENT_TYPES.KNOB,
   },
@@ -239,6 +257,7 @@ export const ELEMENTS: {
   BPM: {
     style: {
       flex: 1,
+      color: "primary",
     },
     type: ELEMENT_TYPES.KNOB,
   },
@@ -247,6 +266,7 @@ export const ELEMENTS: {
       flex: 1,
       color: "primary",
       text: "SAMPLE",
+      additional: <Chop />,
     },
     type: ELEMENT_TYPES.BUTTON_SMALL,
   },

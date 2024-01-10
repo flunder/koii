@@ -1,7 +1,7 @@
 import React from "react";
 import { Image, ViewStyle } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { Colors, Sizes } from "@koii/theme";
+import { Colors, Sizes, Shadow } from "@koii/theme";
 import { Box, Touchable } from "@koii/components";
 import { pickViewStyleProps } from "@koii/utils";
 
@@ -16,6 +16,7 @@ interface Props extends ViewStyle {
   children?: React.ReactNode;
   variant?: "numPad" | "transport";
   size?: "small" | "large";
+  additional?: React.ReactNode;
 }
 
 const Button = ({
@@ -24,6 +25,7 @@ const Button = ({
   color = "primary",
   variant = "numPad",
   size = "large",
+  additional,
   ...props
 }: Props): JSX.Element => {
   const style = pickViewStyleProps(props);
@@ -58,11 +60,7 @@ const Button = ({
       width={56}
       backgroundColor={Colors.black}
       borderRadius={3}
-      shadowColor="black"
-      shadowOffset={{ width: 5, height: 5 }}
-      shadowOpacity={0.7}
-      shadowRadius={6}
-      elevation={5}
+      {...Shadow.default}
       {...style}
     >
       <LinearGradient
@@ -104,9 +102,12 @@ const Button = ({
   );
 
   const ButtonBase = ({ children }: { children: React.ReactNode }) => (
-    <Socket>
-      <Base>{children}</Base>
-    </Socket>
+    <>
+      <Socket>
+        <Base>{children}</Base>
+      </Socket>
+      {additional}
+    </>
   );
 
   return <ButtonBase>{children}</ButtonBase>;

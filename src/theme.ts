@@ -39,9 +39,9 @@ export const Corners = {
 export const Shadow = {
   default: {
     shadowColor: "black",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
+    shadowOffset: { width: 5, height: 5 },
+    shadowOpacity: 0.7,
+    shadowRadius: 6,
     elevation: 5,
   },
 };

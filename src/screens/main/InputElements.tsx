@@ -1,14 +1,14 @@
 import React from "react";
 import { Grid } from "@koii/theme";
-import { Box, ButtonWithState } from "@koii/components";
+import { Box, ButtonWithState, Fader, Knob } from "@koii/components";
 import { LAYOUT, ELEMENTS, ELEMENT_TYPES, ElementProps } from "@koii/data";
 
 const Component = ({ type, style }: ElementProps) => {
   switch (type) {
     case ELEMENT_TYPES.KNOB:
-      return <Box borderWidth={0.2} flex={style.flex}></Box>;
+      return <Knob flex={style.flex} {...style} />;
     case ELEMENT_TYPES.FADER:
-      return <Box borderWidth={0.2} flex={style.flex}></Box>;
+      return <Fader flex={style.flex} {...style} />;
     case ELEMENT_TYPES.BUTTON_SMALL:
       return <ButtonWithState size="small" {...style} />;
     case ELEMENT_TYPES.BUTTON_LARGE:

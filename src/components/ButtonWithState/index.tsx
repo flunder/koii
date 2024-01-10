@@ -7,6 +7,7 @@ interface Props extends ElementProps {
   footer?: boolean;
   variant: "numPad" | "transport";
   size?: "small" | "large";
+  additional?: React.ReactNode;
 }
 
 const ButtonWithState = ({
@@ -19,6 +20,7 @@ const ButtonWithState = ({
   hasIndicator,
   variant = "numPad",
   size = "large",
+  additional,
 }: Props) => {
   const onPress = () => {};
 
@@ -37,7 +39,13 @@ const ButtonWithState = ({
 
   return (
     <Box flexDirection="column" flex={flex}>
-      <Button color={color} onPress={onPress} variant={variant} size={size}>
+      <Button
+        color={color}
+        onPress={onPress}
+        variant={variant}
+        size={size}
+        additional={additional}
+      >
         <Text
           color={Colors.white}
           fontSize={fontSize}
@@ -54,7 +62,7 @@ const ButtonWithState = ({
           <Diode marginLeft={Sizes[2]} state={defaultState ? "on" : "off"} />
         )}
         <Text
-          fontSize={9}
+          fontSize={9.5}
           marginLeft={Sizes[2]}
           fontFamily={Fonts.Regular}
           opacity={0.8}
