@@ -36,7 +36,7 @@ const Knob = ({
               width: "100%",
               height: "100%",
               position: "absolute",
-              opacity: 0.6,
+              opacity: 0.2,
             }}
             source={require("@assets/images/knob_bottom_overlay.png")}
           />
@@ -52,7 +52,7 @@ const Knob = ({
                 width: "100%",
                 height: "100%",
                 position: "absolute",
-                opacity: 0.6,
+                opacity: 0.5,
               }}
               source={require("@assets/images/knob_top_overlay.png")}
             />

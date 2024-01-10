@@ -1,7 +1,14 @@
 import { FlexStyle } from "react-native";
 import { color } from "@koii/components/Button";
 import { Values } from "@koii/utils/ts/values";
-import { ArrowBack, Chop, Label } from "@koii/components";
+import {
+  ArrowBack,
+  ArrowDown,
+  ArrowUp,
+  Asterisk,
+  Chop,
+  Label,
+} from "@koii/components";
 import { color as buttonColors } from "@koii/components/Button";
 import { color as knobColors } from "@koii/components/Knob";
 
@@ -106,6 +113,7 @@ export const ELEMENTS: {
     style: {
       flex: 0.85,
       color: "gray100",
+      additional: <Label name="volume" />,
     },
     type: ELEMENT_TYPES.KNOB,
   },
@@ -137,7 +145,7 @@ export const ELEMENTS: {
       color: "gray300",
       defaultState: true,
       text: "A",
-      icon: <ArrowBack left={-1} />,
+      icon: <Asterisk />,
       hasIndicator: true,
     },
     type: ELEMENT_TYPES.BUTTON_LARGE,
@@ -148,6 +156,7 @@ export const ELEMENTS: {
       color: "gray300",
       defaultState: false,
       text: "B",
+      icon: <ArrowBack left={-1} />,
       hasIndicator: true,
     },
     type: ELEMENT_TYPES.BUTTON_LARGE,
@@ -158,6 +167,7 @@ export const ELEMENTS: {
       color: "gray300",
       defaultState: false,
       text: "C",
+      icon: <ArrowUp top={4} left={1} />,
       hasIndicator: true,
     },
     type: ELEMENT_TYPES.BUTTON_LARGE,
@@ -167,6 +177,7 @@ export const ELEMENTS: {
       flex: 1,
       color: "gray300",
       defaultState: false,
+      icon: <ArrowDown top={4} left={1} />,
       text: "D",
     },
     type: ELEMENT_TYPES.BUTTON_LARGE,

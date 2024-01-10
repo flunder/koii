@@ -30,7 +30,7 @@ const Fader = ({ flex, ...props }: Props): JSX.Element => {
           left="12.5%"
         />
         <LinearGradient
-          colors={[`${Colors.white}FF`, `${Colors.black}15`]}
+          colors={[`${Colors.white}BB`, `${Colors.black}15`]}
           style={{
             flex: 1,
             padding: 1,
@@ -55,7 +55,11 @@ const Fader = ({ flex, ...props }: Props): JSX.Element => {
           {...Shadow.default}
         >
           <Image
-            style={{ width: "100%", height: "100%", position: "absolute" }}
+            style={{
+              width: "100%",
+              height: "100%",
+              position: "absolute",
+            }}
             source={require("@assets/images/knob_top_overlay.png")}
           />
         </Box>

@@ -14,29 +14,20 @@ const Component = ({ type, style }: ElementProps) => {
     case ELEMENT_TYPES.BUTTON_LARGE:
       return <ButtonWithState size="large" {...style} />;
     default:
-      break;
+      return null;
   }
 };
 
-const InputElements = () => {
-  return (
-    <Box
-      width="100%"
-      height={335}
-      flexDirection="row"
-      paddingHorizontal={Grid.gutter_width}
-    >
-      {LAYOUT.map((col) => {
-        return (
-          <Box flex={1} alignItems="center">
-            {col.map((row) => {
-              return <Component key={row} {...ELEMENTS?.[row]} />;
-            })}
-          </Box>
-        );
-      })}
-    </Box>
-  );
-};
+const InputElements = () => (
+  <Box height={335} flexDirection="row" paddingHorizontal={Grid.gutter_width}>
+    {LAYOUT.map((col, i) => (
+      <Box key={i} flex={1} alignItems="center">
+        {col.map((row) => (
+          <Component key={row} {...ELEMENTS?.[row]} />
+        ))}
+      </Box>
+    ))}
+  </Box>
+);
 
 export { InputElements };
