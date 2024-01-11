@@ -16,14 +16,35 @@ import { Gesture, GestureDetector } from "react-native-gesture-handler";
 type MergedProps = FADER_TYPE["style"] & ViewStyle;
 interface Props extends MergedProps {}
 
+const MidLine = () => (
+  <Box
+    width="75%"
+    backgroundColor="#656060"
+    height={1}
+    position="absolute"
+    top="50%"
+    left="12.5%"
+  />
+);
+
+const Track = () => (
+  <LinearGradient
+    colors={[`${Colors.white}BB`, `${Colors.black}15`]}
+    style={{
+      flex: 1,
+      padding: 1,
+      borderRadius: 100,
+    }}
+    locations={[0, 0.2]}
+  >
+    <Box flex={1} backgroundColor={Colors.black} borderRadius={100} width={8} />
+  </LinearGradient>
+);
+
 const Handle = ({ offsetY }: { offsetY: SharedValue<number> }) => {
   const animatedStyle = useAnimatedStyle(() => {
     return {
-      transform: [
-        {
-          translateY: offsetY.value,
-        },
-      ],
+      transform: [{ translateY: offsetY.value }],
     };
   });
 
@@ -34,7 +55,7 @@ const Handle = ({ offsetY }: { offsetY: SharedValue<number> }) => {
           width={29}
           height={29}
           borderRadius={100}
-          backgroundColor={Colors.gray400}
+          backgroundColor="#6D6666"
           {...Shadow.default}
         >
           <Image
@@ -46,6 +67,8 @@ const Handle = ({ offsetY }: { offsetY: SharedValue<number> }) => {
     </Box>
   );
 };
+
+const DRAG_RESISTANCE = 3;
 
 const Fader = ({ flex, ...props }: Props): JSX.Element => {
   const style = pickViewStyleProps(props);
@@ -59,44 +82,23 @@ const Fader = ({ flex, ...props }: Props): JSX.Element => {
     })
     .onUpdate((event) => {
       if (!size?.height) return;
-      offsetY.value = event.translationY / 3 + prevOffsetY.value;
-      if (offsetY.value > size.height - 20) offsetY.value = size.height - 20;
-      if (offsetY.value < -10) offsetY.value = -10;
+      offsetY.value = event.translationY / DRAG_RESISTANCE + prevOffsetY.value;
+      // Restrict movement
+      offsetY.value = Math.max(offsetY.value, -5);
+      offsetY.value = Math.min(offsetY.value, size.height - 25);
     });
 
   return (
     <Box flex={flex} alignSelf="flex-start" width="100%" {...style}>
       <Box
-        marginTop={Sizes[2]}
         flex={1}
+        marginTop={Sizes[2]}
         alignItems="center"
-        marginBottom={Sizes[6]}
+        marginBottom={Sizes[7]}
         onLayout={onLayout}
       >
-        <Box
-          width="75%"
-          backgroundColor="#656060"
-          height={1}
-          position="absolute"
-          top="46%"
-          left="12.5%"
-        />
-        <LinearGradient
-          colors={[`${Colors.white}BB`, `${Colors.black}15`]}
-          style={{
-            flex: 1,
-            padding: 1,
-            borderRadius: 100,
-          }}
-          locations={[0, 0.2]}
-        >
-          <Box
-            flex={1}
-            backgroundColor={Colors.black}
-            borderRadius={100}
-            width={8}
-          />
-        </LinearGradient>
+        <MidLine />
+        <Track />
         <GestureDetector gesture={pan}>
           <Handle offsetY={offsetY} />
         </GestureDetector>
