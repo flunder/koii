@@ -7,7 +7,8 @@ import {
   ArrowUp,
   Asterisk,
   Chop,
-  Label,
+  Gain,
+  VolumeBpm,
 } from "@koii/components";
 import { color as buttonColors } from "@koii/components/Button";
 import { color as knobColors } from "@koii/components/Knob";
@@ -113,7 +114,7 @@ export const ELEMENTS: {
     style: {
       flex: 0.85,
       color: "gray100",
-      additional: <Label name="volume" />,
+      additional: <VolumeBpm />,
     },
     type: ELEMENT_TYPES.KNOB,
   },
@@ -270,7 +271,7 @@ export const ELEMENTS: {
     style: {
       flex: 1,
       color: "primary",
-      additional: <Label name="gain" />,
+      additional: <Gain />,
     },
     type: ELEMENT_TYPES.KNOB,
   },

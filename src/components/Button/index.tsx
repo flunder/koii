@@ -1,7 +1,8 @@
 import React from "react";
-import { Image, ViewStyle } from "react-native";
+import { Image, Text, ViewStyle } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
+import { useBearStore } from "@koii/store";
 import { Box, Touchable } from "@koii/components";
 import { pickViewStyleProps } from "@koii/utils";
 import { Colors, Sizes, Shadow } from "@koii/theme";
@@ -30,6 +31,7 @@ const Button = ({
   ...props
 }: Props): JSX.Element => {
   const style = pickViewStyleProps(props);
+  const { bears, increase } = useBearStore();
 
   const colorProps = {
     primary: [Colors.primary, Colors.primary],
@@ -77,7 +79,14 @@ const Button = ({
   );
 
   const Base = ({ children }: { children: React.ReactNode }) => (
-    <Touchable flex={1} margin={1} borderRadius={2.5} onPress={onPress}>
+    <Touchable
+      flex={1}
+      margin={1}
+      borderRadius={2.5}
+      onPress={() => {
+        increase(1);
+      }}
+    >
       <LinearGradient
         colors={colorProps}
         style={{ flex: 1, borderRadius: 3 }}
@@ -97,6 +106,7 @@ const Button = ({
           height="100%"
         >
           {children}
+          <Text> {bears}</Text>
         </Box>
       </LinearGradient>
     </Touchable>
