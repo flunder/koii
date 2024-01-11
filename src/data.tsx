@@ -65,6 +65,7 @@ export const LAYOUT: ElementNames[][] = [
 
 export interface ElementProps {
   flex?: number;
+  name?: ElementNames;
   type?: ElementTypes;
   color?: buttonColors; // needs to depend on the type
   text?: string;

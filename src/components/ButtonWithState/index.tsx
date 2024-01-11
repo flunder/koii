@@ -1,18 +1,21 @@
-import React from "react";
+import React, { useReducer } from "react";
 
+import { reducer, ACTIONS } from "@koii/reducer";
 import { ElementProps } from "@koii/data";
 import { Colors, Fonts, Sizes } from "@koii/theme";
 import { Box, Button, Diode, Text } from "@koii/components";
 
 interface Props extends ElementProps {
-  footer?: boolean;
+  name: string;
   variant: "numPad" | "transport";
   size?: "small" | "large";
+  footer?: boolean;
   additional?: React.ReactNode;
 }
 
 const ButtonWithState = ({
   text,
+  name,
   flex,
   color,
   defaultState,
@@ -23,8 +26,6 @@ const ButtonWithState = ({
   size = "large",
   additional,
 }: Props) => {
-  const onPress = () => {};
-
   const fontSize = {
     small: 10.5,
     large: variant === "numPad" ? 16 : 10.5,
@@ -38,6 +39,14 @@ const ButtonWithState = ({
         : ("center" as "center"),
   }[size];
 
+  const [state, dispatch] = useReducer(reducer, {}, () => ({
+    [name]: defaultState,
+  }));
+
+  const onPress = () => {
+    dispatch({ type: ACTIONS.TOGGLE_BUTTON, name: name });
+  };
+
   return (
     <Box flexDirection="column" flex={flex}>
       <Button
@@ -46,6 +55,7 @@ const ButtonWithState = ({
         variant={variant}
         size={size}
         additional={additional}
+        name={name}
       >
         <Text
           color={Colors.white}
@@ -59,9 +69,7 @@ const ButtonWithState = ({
         {icon}
       </Button>
       <Box marginTop={Sizes[1]} flexDirection="row" alignItems="center">
-        {hasIndicator && (
-          <Diode marginLeft={Sizes[2]} state={defaultState ? "on" : "off"} />
-        )}
+        {hasIndicator && <Diode marginLeft={Sizes[2]} state={state?.[name]} />}
         <Text
           fontSize={9.5}
           marginLeft={Sizes[2]}

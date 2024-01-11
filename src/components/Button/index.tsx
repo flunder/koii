@@ -1,8 +1,7 @@
 import React from "react";
-import { Image, Text, ViewStyle } from "react-native";
+import { Image, ViewStyle } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
-import { useBearStore } from "@koii/store";
 import { Box, Touchable } from "@koii/components";
 import { pickViewStyleProps } from "@koii/utils";
 import { Colors, Sizes, Shadow } from "@koii/theme";
@@ -15,6 +14,7 @@ const overlayImgLarge = require("@assets/images/button_large_overlay.png");
 interface Props extends ViewStyle {
   onPress: () => void;
   color?: color;
+  name: string;
   children?: React.ReactNode;
   variant?: "numPad" | "transport";
   size?: "small" | "large";
@@ -27,11 +27,11 @@ const Button = ({
   color = "primary",
   variant = "numPad",
   size = "large",
+  name,
   additional,
   ...props
 }: Props): JSX.Element => {
   const style = pickViewStyleProps(props);
-  const { bears, increase } = useBearStore();
 
   const colorProps = {
     primary: [Colors.primary, Colors.primary],
@@ -79,14 +79,7 @@ const Button = ({
   );
 
   const Base = ({ children }: { children: React.ReactNode }) => (
-    <Touchable
-      flex={1}
-      margin={1}
-      borderRadius={2.5}
-      onPress={() => {
-        increase(1);
-      }}
-    >
+    <Touchable flex={1} margin={1} borderRadius={2.5} onPress={onPress}>
       <LinearGradient
         colors={colorProps}
         style={{ flex: 1, borderRadius: 3 }}
@@ -106,7 +99,6 @@ const Button = ({
           height="100%"
         >
           {children}
-          <Text> {bears}</Text>
         </Box>
       </LinearGradient>
     </Touchable>

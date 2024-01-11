@@ -6,7 +6,7 @@ import { Box } from "@koii/components";
 import { pickViewStyleProps } from "@koii/utils";
 
 interface Props extends ViewStyle {
-  state: "on" | "off";
+  state: boolean;
 }
 
 const Diode = ({ state, ...props }: Props): JSX.Element => {
@@ -15,7 +15,7 @@ const Diode = ({ state, ...props }: Props): JSX.Element => {
     <Box
       width={8}
       height={8}
-      backgroundColor={state === "on" ? "#FF570B" : Colors.gray500}
+      backgroundColor={state ? "#FF570B" : Colors.gray500}
       borderRadius={100}
       borderWidth={1}
       borderColor={`${Colors.gray500}AA`}
