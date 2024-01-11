@@ -7,6 +7,7 @@ export interface BoxProps extends ViewStyle {
   transform?: any;
   as?: React.ComponentType;
   pointerEvents?: "box-none" | "none" | "box-only" | "auto";
+  onLayout?: (event: any) => void;
 }
 
 export interface AnimatedBoxProps {
@@ -19,12 +20,13 @@ export const Box = ({
   children,
   as,
   pointerEvents,
+  onLayout,
   ...props
 }: BoxProps | AnimatedBoxProps): JSX.Element => {
   const style = pickViewStyleProps(props);
   const Component = as ?? View;
   return (
-    <Component style={style} pointerEvents={pointerEvents}>
+    <Component style={style} pointerEvents={pointerEvents} onLayout={onLayout}>
       {children}
     </Component>
   );
