@@ -1,6 +1,15 @@
 # EP–133 K.O. II (ReactNative via Expo)
 
-A Teenage Engineering-(ish) UI in typescript & expo/react-native. No emitting any sounds.
+A Teenage Engineering-(ish) UI in Expo + Typescript (react-native). NoT emitting any sounds.
+
+Project uses:
+
+- Typescript
+- Expo fonts
+- Expo aliases for @koii and @assets
+- Reanimated3 + Gesture-Handler
+- UseReducer for state
+- React-native-svg for graphics as far as it goes + overlay texture images
 
 <img src="assets/images/github_preview.gif" alt="Demo gif" width="400" />
 
