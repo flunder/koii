@@ -19,7 +19,7 @@ const Component = ({ name, type, style }: ElementProps) => {
   }
 };
 
-const InputElements = React.memo(() => (
+const InputElements = () => (
   <Box height={335} flexDirection="row" paddingHorizontal={Grid.gutter_width}>
     {LAYOUT.map((col, i) => (
       <Box key={i} flex={1} alignItems="center">
@@ -29,6 +29,6 @@ const InputElements = React.memo(() => (
       </Box>
     ))}
   </Box>
-));
+);
 
 export { InputElements };

@@ -1,9 +1,12 @@
-import React, { useReducer } from "react";
+import React, { useEffect, useReducer } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import { reducer, ACTIONS } from "@koii/reducer";
+import { reducer, ACTIONS, initialState } from "@koii/reducer";
 import { ElementProps } from "@koii/data";
 import { Colors, Fonts, Sizes } from "@koii/theme";
+import { LOCAL_STORAGE_KEYS } from "@koii/constants";
 import { Box, Button, Diode, Text } from "@koii/components";
+import { useUpdateButtonState } from "@koii/utils/hooks/useUpdateButtonState";
 
 interface Props extends ElementProps {
   name: string;
@@ -26,6 +29,8 @@ const ButtonWithState = ({
   size = "large",
   additional,
 }: Props) => {
+  const { state, onPress } = useUpdateButtonState(name);
+
   const fontSize = {
     small: 10.5,
     large: variant === "numPad" ? 16 : 10.5,
@@ -39,42 +44,35 @@ const ButtonWithState = ({
         : ("center" as "center"),
   }[size];
 
-  const [state, dispatch] = useReducer(reducer, {}, () => ({
-    [name]: defaultState,
-  }));
-
-  const onPress = () => {
-    dispatch({ type: ACTIONS.TOGGLE_BUTTON, name: name });
-  };
-
   return (
     <Box flexDirection="column" flex={flex}>
       <Button
+        name={name}
+        size={size}
         color={color}
         onPress={onPress}
         variant={variant}
-        size={size}
         additional={additional}
-        name={name}
       >
         <Text
-          color={Colors.white}
-          fontSize={fontSize}
-          marginBottom={3}
-          alignSelf={textAlign}
           opacity={0.7}
+          marginBottom={3}
+          fontSize={fontSize}
+          color={Colors.white}
+          alignSelf={textAlign}
         >
           {text}
         </Text>
         {icon}
       </Button>
+
       <Box marginTop={Sizes[1]} flexDirection="row" alignItems="center">
         {hasIndicator && <Diode marginLeft={Sizes[2]} state={state?.[name]} />}
         <Text
           fontSize={9.5}
           marginLeft={Sizes[2]}
           fontFamily={Fonts.Regular}
-          opacity={0.8}
+          opacity={0.6}
         >
           {shortName}
         </Text>
