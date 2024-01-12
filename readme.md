@@ -1,6 +1,6 @@
 # EP–133 K.O. II (ReactNative via Expo)
 
-A teenage engineering (ish) user-interface in typescript & expo/react-native.
+A Teenage Engineering-(ish) UI in typescript & expo/react-native. No emitting any sounds.
 
 <img src="assets/images/github_preview.gif" alt="Demo gif" width="400" />
 
