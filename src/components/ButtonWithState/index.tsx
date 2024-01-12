@@ -1,10 +1,7 @@
-import React, { useEffect, useReducer } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import React from "react";
 
-import { reducer, ACTIONS, initialState } from "@koii/reducer";
 import { ElementProps } from "@koii/data";
 import { Colors, Fonts, Sizes } from "@koii/theme";
-import { LOCAL_STORAGE_KEYS } from "@koii/constants";
 import { Box, Button, Diode, Text } from "@koii/components";
 import { useUpdateButtonState } from "@koii/utils/hooks/useUpdateButtonState";
 

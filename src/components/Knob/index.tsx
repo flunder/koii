@@ -11,7 +11,7 @@ import { KNOB_TYPE } from "@koii/data";
 import { Colors, Shadow } from "@koii/theme";
 import { pickViewStyleProps } from "@koii/utils";
 
-export type color = "primary" | "gray100";
+export type knobColors = "primary" | "gray100";
 
 type MergedProps = KNOB_TYPE["style"] & ViewStyle;
 interface Props extends MergedProps {}
@@ -28,10 +28,11 @@ const Knob = ({
   const offsetY = useSharedValue(0);
   const prevOffsetY = useSharedValue(0);
 
-  const indicatorColor = {
-    primary: Colors.gray100,
-    gray100: Colors.white,
-  }[color];
+  const indicatorColor =
+    {
+      primary: Colors.gray100,
+      gray100: Colors.white,
+    }[color] || Colors.gray300;
 
   const pan = Gesture.Pan()
     .onStart(() => {

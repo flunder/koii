@@ -1,7 +1,6 @@
 export * from "./Box";
 export * from "./Button";
 export * from "./ButtonWithState";
-export * from "./Chop";
 export * from "./Diode";
 export * from "./Fader";
 export * from "./Icons";

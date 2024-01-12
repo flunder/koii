@@ -72,7 +72,7 @@ const viewStyleProps: (keyof Required<ViewStyle>)[] = [
   "translateX",
   "translateY",
   "width",
-  "zIndex"
+  "zIndex",
 ];
 
 const textStyleProps: (keyof Required<TextStyle>)[] = [
@@ -165,7 +165,7 @@ const textStyleProps: (keyof Required<TextStyle>)[] = [
   "translateY",
   "width",
   "writingDirection",
-  "zIndex"
+  "zIndex",
 ];
 
 export function pickViewStyleProps<T extends ViewStyle>(props: T): ViewStyle {
@@ -174,7 +174,7 @@ export function pickViewStyleProps<T extends ViewStyle>(props: T): ViewStyle {
     .reduce((acc, [attr, value]) => {
       return {
         ...acc,
-        [attr]: value
+        [attr]: value,
       };
     }, {});
 }
@@ -185,7 +185,7 @@ export function pickTextStyleProps<T extends TextStyle>(props: T): TextStyle {
     .reduce((acc, [attr, value]) => {
       return {
         ...acc,
-        [attr]: value
+        [attr]: value,
       };
     }, {});
 }

@@ -24,7 +24,8 @@ const InputElements = () => (
     {LAYOUT.map((col, i) => (
       <Box key={i} flex={1} alignItems="center">
         {col.map((row) => (
-          <Component key={row} name={row} {...ELEMENTS?.[row]} />
+          /* @ts-expect-error */
+          <Component key={row} name={row} {...ELEMENTS[row]} />
         ))}
       </Box>
     ))}

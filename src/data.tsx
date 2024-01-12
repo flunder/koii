@@ -1,5 +1,4 @@
 import { FlexStyle } from "react-native";
-import { color } from "@koii/components/Button";
 import { Values } from "@koii/utils/ts/values";
 import {
   ArrowBack,
@@ -10,11 +9,11 @@ import {
   Gain,
   VolumeBpm,
 } from "@koii/components";
-import { color as buttonColors } from "@koii/components/Button";
-import { color as knobColors } from "@koii/components/Knob";
+import { buttonColors } from "@koii/components/Button";
+import { knobColors } from "@koii/components/Knob";
 
 export interface Button {
-  color: color;
+  color: buttonColors;
   text: string;
   icon?: any;
   name?: string;
@@ -64,10 +63,10 @@ export const LAYOUT: ElementNames[][] = [
 ];
 
 export interface ElementProps {
+  type: ElementTypes;
   flex?: number;
   name?: ElementNames;
-  type?: ElementTypes;
-  color?: buttonColors; // needs to depend on the type
+  color?: buttonColors;
   text?: string;
   hasIndicator?: boolean;
   shortName?: string;
@@ -77,8 +76,8 @@ export interface ElementProps {
   variant?: any;
 }
 
-export type BUTTON_LARGE_TYPE = {
-  type: ElementTypes[keyof "BUTTON_LARGE"];
+export type BUTTON_TYPE = {
+  type: ElementTypes[keyof "BUTTON_LARGE"] | ElementTypes[keyof "BUTTON_SMALL"];
   style: {
     flex?: FlexStyle["flex"];
     color?: buttonColors;
@@ -109,7 +108,7 @@ export type FADER_TYPE = {
 };
 
 export const ELEMENTS: {
-  [key: string]: BUTTON_LARGE_TYPE | KNOB_TYPE;
+  [key: string]: BUTTON_TYPE | KNOB_TYPE | FADER_TYPE;
 } = {
   VOLUME_KNOB: {
     style: {

@@ -6,14 +6,14 @@ import { Box, Touchable } from "@koii/components";
 import { pickViewStyleProps } from "@koii/utils";
 import { Colors, Sizes, Shadow } from "@koii/theme";
 
-export type color = "primary" | "gray300" | "gray400" | "black";
+export type buttonColors = "primary" | "gray300" | "gray400" | "black";
 
 const overlayImgSmall = require("@assets/images/button_small_overlay.png");
 const overlayImgLarge = require("@assets/images/button_large_overlay.png");
 
 interface Props extends ViewStyle {
   onPress: () => void;
-  color?: color;
+  color?: buttonColors;
   name: string;
   children?: React.ReactNode;
   variant?: "numPad" | "transport";
