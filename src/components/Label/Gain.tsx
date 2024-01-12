@@ -14,6 +14,7 @@ const Gain = (props: ViewStyle) => {
       position="absolute"
       left={-3}
       top={25}
+      zIndex={-1}
       {...style}
     >
       <Image

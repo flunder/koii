@@ -1,17 +1,17 @@
 import React from "react";
 import Animated, {
+  useSharedValue,
   SharedValue,
   useAnimatedStyle,
 } from "react-native-reanimated";
 import { Image, ViewStyle } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { useSharedValue } from "react-native-reanimated";
+import { Gesture, GestureDetector } from "react-native-gesture-handler";
 
 import { Box } from "@koii/components";
 import { FADER_TYPE } from "@koii/data";
-import { pickViewStyleProps, useComponentSize } from "@koii/utils";
 import { Colors, Shadow, Sizes } from "@koii/theme";
-import { Gesture, GestureDetector } from "react-native-gesture-handler";
+import { pickViewStyleProps, useComponentSize } from "@koii/utils";
 
 type MergedProps = FADER_TYPE["style"] & ViewStyle;
 interface Props extends MergedProps {}
