@@ -9,6 +9,7 @@ Project uses:
 - Expo aliases for @koii and @assets
 - Reanimated3 + Gesture-Handler
 - UseReducer for state
+- Modular layout for UI-Elements (data.ts)
 - React-native-svg for graphics as far as it goes + overlay texture images
 
 <img src="assets/images/github_preview.gif" alt="Demo gif" width="300" />
