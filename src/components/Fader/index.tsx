@@ -17,14 +17,7 @@ type MergedProps = FADER_TYPE["style"] & ViewStyle;
 interface Props extends MergedProps {}
 
 const MidLine = () => (
-  <Box
-    width="75%"
-    backgroundColor="#656060"
-    height={1}
-    position="absolute"
-    top="50%"
-    left="12.5%"
-  />
+  <Box width="50%" backgroundColor={Colors.gray500} height={1} top="50%" />
 );
 
 const Track = () => (
@@ -55,7 +48,7 @@ const Handle = ({ offsetY }: { offsetY: SharedValue<number> }) => {
           width={29}
           height={29}
           borderRadius={100}
-          backgroundColor="#6D6666"
+          backgroundColor={Colors.gray400}
           {...Shadow.default}
         >
           <Image

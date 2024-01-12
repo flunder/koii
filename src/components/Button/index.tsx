@@ -38,7 +38,7 @@ const Button = React.memo(
       primary: [Colors.primary, Colors.primary],
       gray300: [Colors.gray300, Colors.gray300],
       gray400: [Colors.gray400, Colors.gray400],
-      black: [Colors.gray500, "#0a0a0a"],
+      black: [Colors.gray500, Colors.black],
     }[color];
 
     const height = size === "large" ? 56 : 28;

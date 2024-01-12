@@ -15,7 +15,7 @@ const Diode = ({ state, ...props }: Props): JSX.Element => {
     <Box
       width={8}
       height={8}
-      backgroundColor={state ? "#FF570B" : Colors.gray500}
+      backgroundColor={state ? Colors.primary : Colors.gray500}
       borderRadius={100}
       borderWidth={1}
       borderColor={`${Colors.gray500}AA`}
